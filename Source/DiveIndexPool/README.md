@@ -53,29 +53,12 @@ To include it in your project:
 
 1. **Add to Your Solution:**
    - Include the project or the source files directly in your solution.
-  
-   ## Installation
-
-DiveIndexPool is available as source code in this repository.
-
-To include it in your project:
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/zacharylayne/DiveIndexPool.git
-   ```
-
-1. **Add to Your Solution:**
-   * Include the project or the source files directly in your solution.
 
 To install the DiveIndexPool library from NuGet, run the following command in the Package Manager Console:
 
 ```
 dotnet add package DiveIndexPool
 ```
-
-> [!NOTE]
-> A NuGet package will be available in the near future.
 
 ## Usage
 
