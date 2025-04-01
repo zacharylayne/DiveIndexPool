@@ -91,7 +91,13 @@ To include it in your project:
    ```
 
 1. **Add to Your Solution:**
-   * Include the project or the source files directly in your solution.dddddddddd
+   * Include the project or the source files directly in your solution.
+
+To install the DiveIndexPool library from NuGet, run the following command in the Package Manager Console:
+
+```
+dotnet add package DiveIndexPool
+```
 
 ## Usage
 
