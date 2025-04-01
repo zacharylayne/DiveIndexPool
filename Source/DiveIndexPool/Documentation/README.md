@@ -1,4 +1,4 @@
-﻿﻿# DiveIndexPool
+﻿# DiveIndexPool
 
 DiveIndexPool is a .NET library for creating index pools, providing a performant way to allocate,
 recycle, and manage numeric indexes efficiently, making it ideal for resource management,
