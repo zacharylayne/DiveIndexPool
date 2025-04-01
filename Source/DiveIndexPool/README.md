@@ -4,13 +4,13 @@
 
 ## Features
 
-* **Supports All Primitive Numeric Types**</br>
+* **Supports All Primitive Numeric Types**<br/>
   Create pools that manage indexes of any primitive numeric type: `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `nint`, `nuint`
 
-* **Optimized for Performance**</br>
+* **Optimized for Performance**<br/>
   Index pools rely on bitmasks for efficient allocation, deallocation, and enumeration, minimizing memory usage and maintaining performance. Additional optimizations are applied for small pools of up to 64 indexes.
 
-* **Flexible API:**</br>
+* **Flexible API:**<br/>
   * Easily take, peek, return, and batch-operate on indexes.
   * Specify what index the pool should start at.
   * Check if indexes are valid, available, or allocated.
@@ -18,7 +18,7 @@
   * Convert pools to array.
   * Clear and reset pools fast.
 
-* **No Exceptions, No Nulls, No Accidental Failure**</br>
+* **No Exceptions, No Nulls, No Accidental Failure**<br/>
   * Methods return `InvalidIndex` values to indicate unavailable indexes rather than null.
   * Try-methods ensure no exceptions are thrown.
   * Invalid arguments are handled gracefully through clearly documented behavior.
@@ -53,6 +53,26 @@ To include it in your project:
 
 1. **Add to Your Solution:**
    - Include the project or the source files directly in your solution.
+  
+   ## Installation
+
+DiveIndexPool is available as source code in this repository.
+
+To include it in your project:
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/zacharylayne/DiveIndexPool.git
+   ```
+
+1. **Add to Your Solution:**
+   * Include the project or the source files directly in your solution.
+
+To install the DiveIndexPool library from NuGet, run the following command in the Package Manager Console:
+
+```
+dotnet add package DiveIndexPool
+```
 
 > [!NOTE]
 > A NuGet package will be available in the near future.
