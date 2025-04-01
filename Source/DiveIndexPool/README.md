@@ -1,4 +1,4 @@
-﻿﻿# DiveIndexPool
+# DiveIndexPool
 
 **DiveIndexPool** is a library for .NET 8.0 that provides performant, memory-efficient pools of integer indexes. Whether you need a small pool of up to 64 indexes or a pool large enough for thousands, **DiveIndexPool** offers simple, clear APIs for taking, returning, enumerating, and managing indexes.
 
