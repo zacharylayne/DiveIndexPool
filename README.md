@@ -50,7 +50,7 @@ Some of the key features of DiveIndexPool include:
    Well-documented API with XML comments to help you understand the usage and functionality of each
    method and property.
 
-* **Lock‑Free & Thread‑Safe:** *(In progress)*
+* **Lock‑Free & Thread‑Safe:** ***(In progress)***
   Uses atomic operations (CAS loops) on a bitmask (backed by `ulong[]`) for minimal contention in
   multi‑threaded scenarios.
 
@@ -91,7 +91,13 @@ To include it in your project:
    ```
 
 1. **Add to Your Solution:**
-   * Include the project or the source files directly in your solution.dddddddddd
+   * Include the project or the source files directly in your solution.
+
+To install the DiveIndexPool library from NuGet, run the following command in the Package Manager Console:
+
+```
+dotnet add package DiveIndexPool
+```
 
 ## Usage
 
@@ -126,7 +132,7 @@ class Program
         Console.WriteLine("Took indexes: " + string.Join(", ", indexes));
 
         // Convert the current pool of available indexes to an array.
-        int[] available = (int[])pool;
+        int[] available = pool.ToArray();
         Console.WriteLine("Available indexes: " + string.Join(", ", available));
     }
 }
