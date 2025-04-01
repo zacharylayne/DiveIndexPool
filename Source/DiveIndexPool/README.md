@@ -84,7 +84,7 @@ int[] indexes = pool.Take(5);
 Console.WriteLine("Took indexes: " + string.Join(", ", indexes));
 
 // Convert the current pool of available indexes to an array.
-int[] available = (int[])pool;
+int[] available = pool.ToArray();
 Console.WriteLine("Available indexes: " + string.Join(", ", available));
 ```
 
