@@ -21,7 +21,7 @@ memory pooling, high‑throughput systems, and more.
 
 [**License**](https://github.com/zacharylayne/DiveIndexPool/blob/master/LICENSE.txt)
 
-<br>
+<br/>
 
 > [!NOTE]
 > Please be aware that the DiveIndexPool library is in active development. New features and improvements are being added, so stay tuned for updates!
@@ -50,10 +50,7 @@ Some of the key features of DiveIndexPool include:
    Well-documented API with XML comments to help you understand the usage and functionality of each
    method and property.
 
-* **Modern C# Features:**
-  Leverages C# 12 features like static abstract interface members to provide a robust and type‑safe API.
-
-* **Lock‑Free & Thread‑Safe:** *(In progress)*
+* **Lock‑Free & Thread‑Safe:** ***(In progress)***
   Uses atomic operations (CAS loops) on a bitmask (backed by `ulong[]`) for minimal contention in
   multi‑threaded scenarios.
 
