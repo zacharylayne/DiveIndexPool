@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<LangVersion>preview</LangVersion>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<DocumentationFile>..\..\Documentation\DiveIndexPool.xml</DocumentationFile>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Title>DiveIndexPool</Title>
+	<Authors>Zachary Layne</Authors>
+	<Company>Entry Point Software</Company>
+	<Description>DiveIndexPool is a .NET 8.0 library that seeks to provide performant, memory-efficient pools of integer indexes. DiveIndexPool offers simple, clear APIs for taking, returning, enumerating, and managing indexes. It offers multiple implementations ranging from extremely fast bitmask-based pools for small capacities up to large, scalable, and thread-safe pools for high-demand scenarios. By recycling and reusing numeric indexes, you can reduce overhead and fragmentation in scenarios such as object recycling, memory management, network connection tracking, resource pooling, and more.
+
+NOTE: This library is in very early stages. Additional features and types are planned for the 1.0 release.</Description>
+	<Copyright>Copyright (c) 2025 Zachary Layne</Copyright>
+	<PackageTags>collections; pools</PackageTags>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<AnalysisLevel>preview-all</AnalysisLevel>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<Version>0.5.0-pre-release</Version>
+	<SignAssembly>False</SignAssembly>
+	<BaseOutputPath>..\..\bin\</BaseOutputPath>
+	<PackageProjectUrl>https://github.com/zacharylayne/DiveIndexPool</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/zacharylayne/DiveIndexPool</RepositoryUrl>
+	<PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+	<IncludeSymbols>True</IncludeSymbols>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<PackageIcon>DiveIndexPool Icon 250 x 250.,png.png</PackageIcon>
+	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+  <ItemGroup>
+    <Compile Remove="BackingType.cs" />
+    <Compile Remove="ConcurrentIndexPool.cs" />
+    <Compile Remove="ConcurrentSimpleIndexPool.cs" />
+    <Compile Remove="ConcurrentSmallIndexPool.cs" />
+    <Compile Remove="SimpleIndexPool.cs" />
+    <Compile Remove="SmallIndexPool - Copy.cs" />
+    <Compile Remove="_ConcurrentIndexPool.cs" />
+    <Compile Remove="_ConcurrentSimpleIndexPool.cs" />
+    <Compile Remove="_ConcurrentSmallIndexPool.cs" />
+    <Compile Remove="_IIndexPool.cs" />
+    <Compile Remove="_IndexPool.cs" />
+    <Compile Remove="_ndexPool.cs" />
+    <Compile Remove="_SimpleIndexPool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Icons\DiveIndexPool Icon 250 x 250.,png.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+	<None Update="LICENSE.txt">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+	<None Update="README.md">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
+  <ItemGroup>
+	<Using Include="DiveIndexPool.Values">
+	  <Static>True</Static>
+	</Using>
+	<Using Include="System.Runtime.CompilerServices.MethodImplOptions">
+	  <Static>True</Static>
+	</Using>
+  </ItemGroup>
+</Project>

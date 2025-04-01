@@ -1,0 +1,1144 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DiveIndexPool</name>
+    </assembly>
+    <members>
+        <member name="T:DiveIndexPool.BackingTypeUnsupportedException">
+            <summary>
+            The <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> class is thrown when an
+            unsupported backing type is used to create a bit field.
+            </summary>
+            <remarks>
+            To throw this exception, use the method <see cref="M:DiveIndexPool.BackingTypeUnsupportedException.ThrowIfUnsupported``1"/>.
+            </remarks>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type)">
+            <summary>
+            Creates a new <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> instance.
+            </summary>
+            <param name="type">
+            The backing type that is not supported.
+            </param>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type,System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type,System.String)">
+            <summary>
+            Creates a new <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> instance.
+            </summary>
+            <param name="type">
+            The backing type that is not supported.
+            </param>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor">
+            <summary>
+            Creates a new <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> instance.
+            </summary>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type,System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String)">
+            <summary>
+            Creates a new <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> instance.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type,System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> instance.
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <param name="inner">
+            The exception that is the cause of the current exception, or a null reference
+            </param>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.Type,System.String)"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor"/>
+            <seealso cref="M:DiveIndexPool.BackingTypeUnsupportedException.#ctor(System.String)"/>
+        </member>
+        <member name="M:DiveIndexPool.BackingTypeUnsupportedException.ThrowIfUnsupported``1">
+            <summary>
+            Throws <see cref="T:DiveIndexPool.BackingTypeUnsupportedException"/> if the type <typeparamref name="T"/>
+            is not a supported backing type for a bit field.
+            </summary>
+            <typeparam name="T">
+            The type to check.
+            </typeparam>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown when the specified type is not supported as a backing type for a bit field.
+            </exception>
+        </member>
+        <member name="T:DiveIndexPool.IIndexPool">
+            <summary>
+            The <see cref="T:DiveIndexPool.IIndexPool"/> interface provides basic functionality for managing a pool of indexes.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.IndexType">
+            <summary>
+            Gets the type of the indexes in the pool.
+            </summary>
+            <value>
+            The type of the indexes in the pool.
+            </value>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.IsThreadSafe">
+            <summary>
+            Gets whether or not the pool is thread-safe.
+            </summary>
+            <value>
+            A value of <see langword="true"/> if the pool is thread-safe;
+            otherwise, <see langword="false"/>.
+            </value>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.Capacity">
+            <summary>
+            Gets the pool's capacity.
+            </summary>
+            <value>
+            The pool's capacity.
+            </value>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.Count">
+            <summary>
+            Gets the number of indexes in the pool.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.AllocatedCount">
+            <summary>
+            Gets the number of indexes that have been taken <em>(i.e. allocated)</em> from the pool.
+            </summary>
+            <value>
+            The number of indexes that have been taken from the pool.
+            </value>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool.IsEmpty">
+            <summary>
+            Gets a value indicating whether the pool is empty.
+            </summary>
+            <value>
+            A value of <see langword="true"/> if the index pool is empty;
+            otherwise, <see langword="false"/>.
+            </value>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool.Reset">
+            <summary>
+            Resets the pool to its initial state.
+            </summary>
+            <seealso cref="M:DiveIndexPool.IIndexPool.Clear"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool.Clear">
+            <summary>
+            Clears the pool of all indexes.
+            </summary>
+            <seealso cref="M:DiveIndexPool.IIndexPool.Reset"/>
+        </member>
+        <member name="T:DiveIndexPool.IIndexPool`1">
+            <summary>
+            The <see cref="T:DiveIndexPool.IIndexPool`1"/> interface provides basic functionality for managing a pool of indexes
+            of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">
+            The numeric type of the indexes.
+            </typeparam>
+        </member>
+        <member name="P:DiveIndexPool.IIndexPool`1.StartIndex">
+            <summary>
+            Gets the starting index value.
+            </summary>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.IsValid(`0)">
+            <summary>
+            Returns whether or not the specified index is within the pool's capacity.
+            </summary>
+            <param name="index">
+            The index to check.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if the index is within the pool's capacity;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            Valid indexes typically are <c>[startIndex..(startIndex + poolCapacity - 1)]</c>
+            </remarks>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.Take">
+            <summary>
+            Takes a single index from the pool.
+            </summary>
+            <returns>
+            The index that was taken from the pool or, if the pool is empty, <see cref="F:DiveIndexPool.Values`1.InvalidIndex"/>.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take(System.UInt64)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryTake(`0@)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.Take(System.UInt64)">
+            <summary>
+            Takes a specified number of indexes from the pool.
+            </summary>
+            <param name="count">
+            The number of indexes to take. Values are clamped between 1 and the pool's capacity.
+            </param>
+            <returns>
+            An array of indexes.If the index pool doesn't have enough free indexes to fill the array,
+            the remaining array indexes will be set to <see cref="F:DiveIndexPool.Values`1.InvalidIndex"/>
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryTake(`0@)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.TryTake(`0@)">
+            <summary>
+            Attempts to take a single index from the pool.
+            </summary>
+            <param name="index">
+            Contains an index from the pool or <see cref="F:DiveIndexPool.Values`1.InvalidIndex"/> if there is none.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if an index was successfully taken;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take(System.UInt64)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.TakeAll">
+            <summary>
+            Takes all free indexes from the pool.
+            </summary>
+            <returns>
+            An array containing all free indexes. If there are no free indexes, an empty array is returned.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take(System.UInt64)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryTake(`0@)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryTakeAll(`0[]@)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.TryTakeAll(`0[]@)">
+            <summary>
+            Attempts to take all free indexes from the pool.
+            </summary>
+            <param name="indexes">
+            The indexes taken from the pool, or an empty array if no indexes were available.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if all free indexes were successfully taken;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Take(System.UInt64)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryTake(`0@)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TakeAll"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.Peek">
+            <summary>
+            Peeks at the next available index without taking it.
+            </summary>
+            <returns>
+            The next available index, or <see cref="F:DiveIndexPool.Values`1.InvalidIndex"/> if the next index is not available.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.TryPeek(`0@)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.TryPeek(`0@)">
+            <summary>
+            Attempts to peek at the next available index without taking it.
+            </summary>
+            <param name="index">
+            The next available index or, if the next index is not available, <see cref="F:DiveIndexPool.Values`1.InvalidIndex"/>.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if the next index is available;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Peek"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.Contains(`0)">
+            <summary>
+            Returns whether or not the pool contains the specified index.
+            </summary>
+            <param name="index">
+            The index to check for.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if the pool contains the index;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            This method will return <see langword="false"/> if the index is outside the pool's capacity
+            or otherwise invalid.
+            </remarks>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.IsAllocated(`0)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.IsValid(`0)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.IsAllocated(`0)">
+            <summary>
+            Returns whether or not the specified index is allocated.
+            </summary>
+            <param name="index">
+            The index to check.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if the index is allocated;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            This method will return <see langword="false"/> if the index is outside the pool's capacity
+            or otherwise invalid.
+            </remarks>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Contains(`0)"/>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.IsValid(`0)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.Return(`0)">
+            <summary>
+            Returns an index to the pool.
+            </summary>
+            <param name="index">
+            The index to return.
+            </param>
+            <returns>
+            A value of <see langword="true"/> if the index was successfully returned;
+            otherwise, <see langword="false"/>.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.ReturnAll(System.ReadOnlySpan{`0})"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.ReturnAll(System.ReadOnlySpan{`0})">
+            <summary>
+            Returns a range of indexes to the pool.
+            </summary>
+            <param name="indexes">
+            A span of indexes to return.
+            </param>
+            <returns>
+            The number of indexes successfully returned to the pool.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.Return(`0)"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.ToArray">
+            <summary>
+            Returns a snapshot of the index pool as an array.
+            </summary>
+            <returns>
+            The indexes in the pool or an empty array if the pool is empty.
+            If there are more indexes in the pool than can be returned in an array,
+            the array will be truncated.
+            </returns>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.EnumerateAllocated">
+            <summary>
+            Enumerates the allocated indexes in the pool.
+            </summary>
+            <returns>
+            An enumerator that allows for iterating through the allocated indexes.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.GetEnumerator"/>
+        </member>
+        <member name="M:DiveIndexPool.IIndexPool`1.GetEnumerator">
+            <summary>
+            Enumerates the free indexes in the pool.
+            </summary>
+            <returns>
+            An enumerator that allows for iterating through the free indexes.
+            </returns>
+            <seealso cref="M:DiveIndexPool.IIndexPool`1.EnumerateAllocated"/>
+        </member>
+        <member name="T:DiveIndexPool.IndexPool">
+            <summary>
+            The <see cref="T:DiveIndexPool.IndexPool"/> abstract class provides a base class for index pools
+            and the means to create index pools.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.IndexType">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.Capacity">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.AllocatedCount">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.IsEmpty">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool.IsThreadSafe">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool.Create``1(System.UInt64,System.Nullable{``0},System.Boolean)">
+            <summary>
+            Creates a new index pool with the given capacity and specifying whether or not
+            the index pool should be thread safe.
+            </summary>
+            <typeparam name="T">
+            The numeric primitive type of the indexes.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </typeparam>
+            <param name="capacity">
+            The capacity of the index pool. Index pools with capacities of 64 or less
+            have special optimizations.
+            </param>
+            <param name="startIndex">
+            Optional. The starting index for the index pool. Defaults to 0.
+            </param>
+            <param name="makeThreadSafe">
+            Optional. Specify <see langword="true"/> to make the index pool thread safe.
+            Defaults to <see langword="false"/>.
+            </param>
+            <returns>
+            A new index pool with the given capacity and thread safety.
+            </returns>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown if the backing type <typeparamref name="T"/> is not a supported numeric primitive.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </exception>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="T:DiveIndexPool.IndexPool`1">
+            <summary>
+            The <see cref="T:DiveIndexPool.IndexPool`1"/> class provides the means to create index pools.
+            </summary>
+            <typeparam name="T">
+            The numeric primitive type of the indexes.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </typeparam>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown if the backing type <typeparamref name="T"/> is not a supported numeric primitive.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </exception>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.#cctor">
+            <summary>
+            Statically initializes the <see cref="T:DiveIndexPool.IndexPool`1"/> class.
+            </summary>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown if the backing type <typeparamref name="T"/> is not a supported numeric primitive.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </exception>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool`1.StartIndex">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.IndexPool`1.IndexType">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.IsValid(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.Take">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.Take(System.UInt64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.TryTake(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.TakeAll">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.TryTakeAll(`0[]@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.Peek">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.TryPeek(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.IsAllocated(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.Return(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.ReturnAll(System.ReadOnlySpan{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.ToArray">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.EnumerateAllocated">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.IndexPool`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:DiveIndexPool.LargeIndexPool`1">
+            <summary>
+            The <see cref="T:DiveIndexPool.LargeIndexPool`1"/> class provides a simple, fast, and efficient
+            implementation of an index pool for a large number of indexes. The pool is backed
+            by an array of bitmasks and is suitable for use cases where the number of indexes
+            is greater than 64.
+            </summary>
+            <typeparam name="T">
+            The numeric primitive type of the indexes.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </typeparam>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown if the backing type <typeparamref name="T"/> is not a supported numeric primitive
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </exception>
+            <seealso cref="T:DiveIndexPool.SmallIndexPool`1"/>
+            <threadsafety static="true" instance="false"/>
+        </member>
+        <member name="F:DiveIndexPool.LargeIndexPool`1._Bitmasks">
+            <summary>
+            An array of 64-bit bitmasks to track the allocation status of indexes.
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.LargeIndexPool`1._BitmaskCount">
+            <summary>
+            The number of 64-bit bitmasks needed to cover <see cref="P:DiveIndexPool.LargeIndexPool`1.Capacity"/> indexes.
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.LargeIndexPool`1._RemainderBitmask">
+            <summary>
+            The bitmask for the remainder of indexes when the capacity is not a multiple of 64.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.LargeIndexPool`1.IsThreadSafe">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.LargeIndexPool`1.Capacity">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.LargeIndexPool`1.Count">
+            <inheritdoc/>
+        </member>
+        <member name="F:DiveIndexPool.LargeIndexPool`1._StartIndex">
+            <summary>
+            The backing field for <see cref="P:DiveIndexPool.LargeIndexPool`1.StartIndex"/>.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.LargeIndexPool`1.StartIndex">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.LargeIndexPool`1.IsEmpty">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.#ctor(System.UInt64,System.Nullable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiveIndexPool.LargeIndexPool`1"/> class.
+            </summary>
+            <param name="capacity">
+            The total number of indexes in the pool. The value is clamped between 1
+            and <see cref="F:DiveIndexPool.Values.AbsoluteMaxCapacity"/>.
+            </param>
+            <param name="startIndex">
+            The starting index value. Defaults to zero if not provided.
+            </param>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.IsValid(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Take">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.TryTake(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Take(System.UInt64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.TakeAll">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.TryTakeAll(`0[]@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Peek">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.TryPeek(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.Return(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.ReturnAll(System.ReadOnlySpan{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.ToArray">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.EnumerateAllocated">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.LargeIndexPool`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:DiveIndexPool.SmallIndexPool`1">
+            <summary>
+            The <see cref="T:DiveIndexPool.SmallIndexPool`1"/> class provides a simple, fast, and efficient
+            implementation of an index pool for a small number of indexes. The pool is backed
+            by a bitmask and is suitable for use cases where the number of indexes is less than
+            or equal to 64.
+            </summary>
+            <typeparam name="T">
+            The numeric primitive type of the indexes.
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </typeparam>
+            <exception cref="T:DiveIndexPool.BackingTypeUnsupportedException">
+            Thrown if the backing type <typeparamref name="T"/> is not a supported numeric primitive
+            The following types are supported:
+              <list type="bullet">
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.byte">byte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.char">char</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int32">int</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int64">long</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.intptr">nint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uintptr">nuint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.sbyte">sbyte</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.int16">short</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint32">uint</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint64">ulong</see>
+                </item>
+                <item>
+                <see href="https://docs.microsoft.com/dotnet/api/system.uint16">ushort</see>
+                </item>
+              </list>
+            </exception>
+            <threadsafety instance="false"/>
+            <seealso cref="T:DiveIndexPool.LargeIndexPool`1"/>
+        </member>
+        <member name="F:DiveIndexPool.SmallIndexPool`1._Bitmask">
+            <summary>
+            The bitmask used to track free indexes.
+            </summary>
+        </member>
+        <member name="P:DiveIndexPool.SmallIndexPool`1.IsThreadSafe">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.SmallIndexPool`1.Capacity">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.SmallIndexPool`1.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.SmallIndexPool`1.StartIndex">
+            <inheritdoc/>
+        </member>
+        <member name="P:DiveIndexPool.SmallIndexPool`1.IsEmpty">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.#ctor(System.Byte,System.Nullable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiveIndexPool.SmallIndexPool`1"/> class.
+            </summary>
+            <param name="capacity">
+            Optional. The number of indexes in the pool.
+            The value is clamped to a minimum of 1 and a maximum of 64.
+            Defaults to <see cref="F:DiveIndexPool.Values.DefaultSmallCapacity"/>.
+            </param>
+            <param name="startIndex">
+            Optional. The starting index value. The default value is 0.
+            </param>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.IsValid(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Take">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Take(System.UInt64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.TryTake(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.TakeAll">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.TryTakeAll(`0[]@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Peek">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.TryPeek(`0@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.Return(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.ReturnAll(System.ReadOnlySpan{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.ToArray">
+            <inheritdoc/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.EnumerateAllocated">
+            <inheritdoc/>
+            <seealso cref="M:DiveIndexPool.SmallIndexPool`1.GetEnumerator"/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.GetEnumerator">
+            <inheritdoc/>
+            <seealso cref="M:DiveIndexPool.SmallIndexPool`1.EnumerateAllocated"/>
+        </member>
+        <member name="M:DiveIndexPool.SmallIndexPool`1.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:DiveIndexPool.Values">
+            <summary>
+            The <see cref="T:DiveIndexPool.Values"/> class provides constant &amp; read-only values
+            for the <see cref="N:DiveIndexPool"/> library.
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.Values.SupportedBackingTypes">
+            <summary>
+            The list of all supported backing types for bit fields.
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.Values.BitCount">
+            <summary>
+            A map of types to the number of bits they can hold
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.Values.DefaultSmallCapacity">
+            <summary>
+            The default capacity for an index pool (<c>64</c>).
+            </summary>
+            <seealso cref="F:DiveIndexPool.Values.DefaultMaxCapacity"/>
+            <seealso cref="F:DiveIndexPool.Values.AbsoluteMaxCapacity"/>
+        </member>
+        <member name="F:DiveIndexPool.Values.DefaultMaxCapacity">
+            <summary>
+            The default maximum capacity for an index pool (<c>1,073,741,824</c>).
+            </summary>
+            <seealso cref="F:DiveIndexPool.Values.DefaultSmallCapacity"/>
+            <seealso cref="F:DiveIndexPool.Values.AbsoluteMaxCapacity"/>
+        </member>
+        <member name="F:DiveIndexPool.Values.AbsoluteMaxCapacity">
+            <summary>
+            The absolute maximum capacity for an index pool (<c>137,438,953,408</c>).
+            </summary>
+            <seealso cref="F:DiveIndexPool.Values.DefaultSmallCapacity"/>
+            <seealso cref="F:DiveIndexPool.Values.DefaultMaxCapacity"/>
+        </member>
+        <member name="T:DiveIndexPool.Values`1">
+            <summary>
+            The <see cref="T:DiveIndexPool.Values`1"/> class provides for type <typeparamref name="T"/>
+            constant &amp; read-only values for the <see cref="N:DiveIndexPool"/> library.
+            </summary>
+            <typeparam name="T">
+            The type to provide values for.
+            </typeparam>
+        </member>
+        <member name="M:DiveIndexPool.Values`1.#cctor">
+            <summary>
+            Statically initializes information about the specified backing type.
+            </summary>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.IsSupportedBackingType">
+            <summary>
+            Whether or not <typeparamref name="T"/> is a supported type to back index pools.
+            </summary>
+            <value>
+            A value of <see langword="true"/> if <typeparamref name="T"/> is a supported type;
+            <see langword="false"/> otherwise.
+            </value>
+            <seealso cref="F:DiveIndexPool.Values.SupportedBackingTypes"/>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.MaxBitCount">
+            <summary>
+            The maximum number of bits the type <typeparamref name="T"/> can hold.
+            </summary>
+            <value>
+            The maximum number of bits the type <typeparamref name="T"/> can hold.
+            </value>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.MaxValue">
+            <summary>
+            The maximum value of <typeparamref name="T"/>
+            (<see cref="F:DiveIndexPool.Values`1.MaxValue"/> - <see cref="F:DiveIndexPool.Values`1.One"/>).
+            </summary>
+            <value>
+            The maximum value of <typeparamref name="T"/>.
+            </value>
+            <seealso cref="F:DiveIndexPool.Values`1.MinValue"/>
+            <see href="https://learn.microsoft.com/dotnet/api/system.numerics.iminmaxvalue-1.maxvalue">
+            System.Numerics.IMinMaxValue{T}.MaxValue</see>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.MinValue">
+            <summary>
+            The minimum value of <typeparamref name="T"/>.
+            </summary>
+            <value>
+            The minimum value of <typeparamref name="T"/>.
+            </value>
+            <seealso cref="F:DiveIndexPool.Values`1.MaxValue"/>
+            <see href="https://learn.microsoft.com/dotnet/api/system.numerics.iminmaxvalue-1.minvalue">
+            System.Numerics.IMinMaxValue{T}.MinValue</see>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.One">
+            <summary>
+            The value of <c>1</c> as <typeparamref name="T"/>.
+            </summary>
+            <value>
+            The value of <c>1</c> as <typeparamref name="T"/>.
+            </value>
+            <seealso cref="F:DiveIndexPool.Values`1.Zero"/>
+            <see href="https://learn.microsoft.com/dotnet/api/system.numerics.inumberbase-1.one">
+            System.Numerics.INumberBase{T}.One</see>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.Zero">
+            <summary>
+            The value <c>0</c> as <typeparamref name="T"/>.
+            </summary>
+            <value>
+            The value <c>0</c> as <typeparamref name="T"/>.
+            </value>
+            <seealso cref="F:DiveIndexPool.Values`1.One"/>
+            <see href="https://learn.microsoft.com/dotnet/api/system.numerics.inumberbase-1.zero">
+            System.Numerics.INumberBase{T}.Zero</see>
+        </member>
+        <member name="F:DiveIndexPool.Values`1.InvalidIndex">
+            <summary>
+            The value used to represent an invalid index.
+            </summary>
+        </member>
+    </members>
+</doc>
