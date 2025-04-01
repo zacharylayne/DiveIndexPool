@@ -1,4 +1,4 @@
-﻿# DiveIndexPool
+﻿﻿# DiveIndexPool
 
 DiveIndexPool is a .NET library for creating index pools, providing a performant way to allocate,
 recycle, and manage numeric indexes efficiently, making it ideal for resource management,
@@ -50,7 +50,7 @@ Some of the key features of DiveIndexPool include:
    Well-documented API with XML comments to help you understand the usage and functionality of each
    method and property.
 
-* **Lock‑Free & Thread‑Safe:** *(In progress)*
+* **Lock‑Free & Thread‑Safe:** ***(In progress)***
   Uses atomic operations (CAS loops) on a bitmask (backed by `ulong[]`) for minimal contention in
   multi‑threaded scenarios.
 
@@ -91,7 +91,13 @@ To include it in your project:
    ```
 
 1. **Add to Your Solution:**
-   * Include the project or the source files directly in your solution.dddddddddd
+   * Include the project or the source files directly in your solution.
+
+To install the DiveIndexPool library from NuGet, run the following command in the Package Manager Console:
+
+```
+dotnet add package DiveIndexPool
+```
 
 ## Usage
 
@@ -126,7 +132,7 @@ class Program
         Console.WriteLine("Took indexes: " + string.Join(", ", indexes));
 
         // Convert the current pool of available indexes to an array.
-        int[] available = (int[])pool;
+        int[] available = pool.ToArray();
         Console.WriteLine("Available indexes: " + string.Join(", ", available));
     }
 }
@@ -156,6 +162,14 @@ class Program
 DiveIndexPool supports all common integral types as long as they meet the constraints (`unmanaged`,
 `IBinaryInteger<T>`, `IMinMaxValue<T>`). Please ensure that the capacity and starting index are within
 the valid range for the chosen type.
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome! Please feel free to fork the repository and submit pull requests or open issues for bugs and feature requests.
+
+## License
+
+This project is licensed under the [MIT License](https://www.github.com/zacharylayne/diveindexpool/blob/master/license.txt).
 
 ## Questions or comments?
 

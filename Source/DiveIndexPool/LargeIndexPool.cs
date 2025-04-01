@@ -91,7 +91,7 @@ namespace DiveIndexPool;
 /// <seealso cref="SmallIndexPool{T}"/>
 /// <threadsafety static="true" instance="false"/>
 internal sealed class LargeIndexPool<T>
-: IndexPool<T>
+    : IndexPool<T>
     where T : unmanaged, IBinaryInteger<T>, IMinMaxValue<T>
 {
     /// <summary>
